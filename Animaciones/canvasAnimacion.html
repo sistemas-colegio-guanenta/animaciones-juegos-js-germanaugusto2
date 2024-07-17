@@ -1,0 +1,205 @@
+
+Todos los temas
+Periodo III
+Periodo III
+Material
+P3 - Animaciones en JS
+Publicado: 18:10
+En el repositorio en el que viene trabajando cree una carpeta llamada animaciones y dentro de ella descargue los archivos adjuntos.
+
+canvasAnimacion.html
+HTML
+
+canvasAnimacion01.html
+HTML
+
+canvasAnimacion02.html
+HTML
+
+canvasAnimacion03.html
+HTML
+
+canvasAnimacion04.html
+HTML
+
+canvasAnimacion05.html
+HTML
+Material
+P3 - Animaciones con JS
+Última modificación: 17:39
+Completada Pregunta
+P3 - Introducción a Internet
+Institucional
+Fecha de entrega: 16:40
+Material
+P3 - Guanentino, Responda! Matemáticas
+Publicado: 17:18
+Periodo II
+Periodo II
+Completada Tarea
+P2 - Bimestral Telemática
+Institucional
+Fecha de entrega: 10 jul, 18:10
+Material
+P2 - Hosting en github
+Publicado: 9 jul
+Completada Tarea
+P2 - Bimestral Teoría - Práctica (Entrega No. 2)
+Institucional
+Fecha de entrega: 9 jul, 10:00
+Material
+P2 - Sitios web gratis con iconos para tus proyectos
+Publicado: 8 jul
+Completada Tarea
+P2 - Bimestral Teoría - Práctica (Entrega No. 1)
+Institucional
+Fecha de entrega: 8 jul, 18:30
+Completada Tarea
+P2 - Repositorio github Canvas
+Institucional
+Fecha de entrega: 28 may, 9:35
+Completada Tarea
+P2 - Tipos de medios de transmisión
+Institucional
+Fecha de entrega: 15 may, 16:00
+Material
+P2 - Guanentino, Responda! Inglés
+Publicado: 15 may
+Tarea
+P2 - Crucigrama telematica
+Institucional
+Fecha de entrega: 8 may, 16:10
+Material
+P2 - Datos estudiantes grado 11
+Publicado: 8 may
+Periodo I
+Periodo I
+Completada Tarea
+P1 - Bimestral Telemática
+Institucional
+Fecha de entrega: 3 abr, 16:05
+Completada Tarea
+P1 - Entrega final proyecto del periodo.
+Institucional
+Fecha de entrega: 2 abr, 8:45
+Material
+P1 - Autoevaluación
+Publicado: 1 abr
+Material
+P1 - Guanentino, Responda! Matemáticas
+Publicado: 20 mar
+Completada Tarea
+P1 - Aporte individual proyecto
+6
+6 comentarios
+Institucional
+Fecha de entrega: 20 mar, 17:55
+Completada Tarea
+P1 - Señales analógicas vs. digitales
+Institucional
+Fecha de entrega: 20 mar, 18:00
+Material
+P1 - Guanentino, Responda! Inglés
+Publicado: 13 mar
+Material
+P1 - Contenidos proyectos periodo
+Publicado: 12 mar
+Completada Tarea
+P1 - Ejemplo de página web usando flexbox, grid y RWD.
+Institucional
+Fecha de entrega: 11 mar, 17:55
+Material
+P1 - Guanentino, Responda! C. Sociales
+Publicado: 6 mar
+Trabajo de clase de Esp. Sistemas 11 - 2024 Especialidad en Sistemas
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CANVAS Animación</title>
+<style>
+#miCanvas{
+	border:dotted 2px yellow;
+	background:green;	
+}
+</style>
+<script>
+var ctx;
+var origenx = 0;
+var origeny = 0;
+var anchocaja = 500;
+var altocaja = 300;
+var radio = 10;
+var limitecajaizquierdo = anchocaja + origenx - radio;
+var limitecajaArriba = altocaja + origeny - radio;
+var limiteCajaDerecha = origenx + radio;
+var limiteCajaAbajo = origeny + radio;
+var bolax = 50;
+var bolay = 50;
+var vx = 4;
+var vy = 4;
+			
+window.onload = function(){
+	var canvas = document.getElementById("miCanvas");
+	if(canvas && canvas.getContext){
+		ctx = canvas.getContext("2d");
+		if(ctx){
+			ctx.lineWidth = radio;
+			ctx.fillStyle = "rgb(200,0,50)";
+			mueve();
+			setInterval(mueve,60);
+			
+			
+		} else {
+			alert("Error al crear tu contexto");	
+		}
+	}
+}
+function mueve(){
+	ctx.clearRect(origenx, origeny, anchocaja, altocaja);
+	verifica();
+	ctx.beginPath();
+	ctx.arc(bolax, bolay, radio, 0, Math.PI*2,true);
+	ctx.fill();
+	ctx.strokeRect(origenx, origeny, anchocaja, altocaja);
+}
+
+function verifica(){
+	var nbolax = bolax + vx;
+	var nbolay = bolay + vy;
+	
+	if(nbolax > limitecajaizquierdo){
+		vx = -vx;
+		nbolax = limitecajaizquierdo;	
+	}
+	
+	if(nbolax < limiteCajaDerecha){
+		nbolax = limiteCajaDerecha;
+		vx = -vx;	
+	}
+	
+	if(nbolay > limitecajaArriba){
+		nbolay = limitecajaArriba;
+		vy = -vy;	
+	}
+	
+	if(nbolay < limiteCajaAbajo){
+		nbolay = limiteCajaAbajo;
+		vy = -vy;	
+	}
+	
+	bolax = nbolax;
+	bolay = nbolay;
+	
+}
+			
+</script>
+</head>
+
+<body>
+<h1>CANVAS Animación</h1>
+<canvas id="miCanvas" width="500px" height="300px">
+Tu navegador no soporta CANVAS
+</canvas>
+</body>
+</html>
